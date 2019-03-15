@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Template 3种写法</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>Template 3种写法</h1>
+    <hr>
+    <div id="app">
+    </div>
+    <!-- 在标签里建模板 第2种-->
+    <template id="app2">
+        <h2 style='color:red'>我是一个Template标签模板</h2>
+    </template>
+    <!-- 在script里写模板 第3种 进行外部引用 -->
+    <script type="x-template" id="app3">
+        <h2 style='color:red'>我是一个Script标签模板</h2>
+    </script>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            // 第1种：适合很小的模板 template:`<h2 style='color:red'>我是一个选项模板</h2>`
+            template: '#app3'
+        })
+    </script>
+</body>
+
+</html>

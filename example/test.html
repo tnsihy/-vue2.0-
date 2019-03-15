@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>测试</h1>
+    <hr>
+    <div id="app">
+        <person :name='messgae'></person>
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data:{
+                messgae:'物联网'
+            },
+            components:{
+                'person':{
+                    template:`<h1 style="color:green">{{name}}</h1>`,
+                    props:['name']
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

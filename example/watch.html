@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Watch选项 监控数据</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>Watch选项 监控数据</h1>
+    <hr>
+    <div id="app">
+        <p>今日温度:{{temperature}}°</p>
+        <p>穿衣建议:{{suggest}}</p>
+        <p>
+            <button @click="Add">增加温度</button>
+            <button @click="Min">减少温度</button>
+        </p>
+    </div>
+
+    <script type="text/javascript">
+        var suggestArray = ['T恤短袖', '夹克长裙', '丝绵羽绒服'];
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                temperature: 20,
+                suggest: '夹克长裙'
+            },
+            methods: {
+                Add: function () {
+                    return this.temperature += 5;
+                },
+                Min: function () {
+                    return this.temperature -= 5;
+                }
+            }
+            //构造器内部写法： 
+            //watch: {
+            //     temperature: function (newTem) {
+            //         if (newTem > 26) {
+            //             this.suggest = suggestArray[0];
+            //         } else if (newTem < 0) {
+            //             this.suggest = suggestArray[2];
+            //         } else {
+            //             this.suggest = suggestArray[1];
+            //         }
+            //     }
+            // }
+        })
+
+        // 构造器外部写法：
+        app.$watch('temperature', function (newTem) {
+            if (newTem > 26) {
+                this.suggest = suggestArray[0];
+            } else if (newTem < 0) {
+                this.suggest = suggestArray[2];
+            } else {
+                this.suggest = suggestArray[1];
+            }
+        })
+    </script>
+</body>
+
+</html>

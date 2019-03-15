@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实例方法</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery-3.3.1.js"></script>
+
+</head>
+
+<body>
+    <h1>实例方法</h1>
+    <h4>
+        $mount方法 $destroy卸载方法 $forceUpdate更新方法 $nextTick()数据修改方法
+    </h4>
+    <hr>
+    <div id="app">
+        <p></p>
+    </div>
+    <!-- button放在构造器id=app外部 -->
+    <p><button onclick="destroy()">销毁</button></p>
+    <p><button onclick="reload()">刷新</button></p>
+    <p><button onclick="tick()">更改数据</button></p>
+
+    <script type="text/javascript">
+        function destroy() {
+            vm.$destroy();
+        };
+
+        function reload() {
+            vm.$forceUpdate();
+        };
+
+        function tick(){
+            vm.message = 'update message info';
+            vm.$nextTick(function(){
+                console.log('message更新数据已完成');
+            });
+        }
+
+        var appExtend = Vue.extend({
+            template: `<p>{{message}}</p>`,
+            data: function () {
+                return {
+                    message: 'Hello!'
+                }
+            },
+            mounted: function () {
+                console.log('mounted 被创建');
+            },
+            destroyed: function () {
+                console.log('destroyed 销毁之后');
+            },
+            updated: function () {
+                console.log('updated 被更新');
+            }
+        });
+
+        var vm = new appExtend().$mount('#app');
+    </script>
+</body>
+
+</html>

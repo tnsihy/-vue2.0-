@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>propsData Option</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>propsData Option</h1>
+    <hr>
+    <div id="app">
+        <!-- Vue.extend知识点 包含template data:function(){return {}}-->
+        <header></header>
+    </div>
+
+    <script type="text/javascript">
+        var header_a = Vue.extend({
+            template: `<p>{{message}}--{{a}}</p>`,
+            data: function () {
+                return {
+                    message: 'Hello World'
+                }
+            },
+            props: ['a']
+        });
+        // 挂载，传递
+        new header_a({
+            propsData: {
+                a: 1
+            }
+        }).$mount('header');
+    </script>
+</body>
+
+</html>

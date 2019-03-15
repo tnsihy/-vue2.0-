@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Extends Option 扩展选项</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>Extends Option 扩展选项</h1>
+    <hr>
+    <div id="app">
+        <!-- <p>{{Num}}</p> -->
+        <p>${Num}</p>
+        <p><button @click='Add'>Add</button></p>
+    </div>
+
+    <script type="text/javascript">
+        var extendObj = {
+            updated: function () {
+                console.log('我是扩展的updated');
+            }
+        }
+        var app = new Vue({
+            el: '#app',
+            data: {
+                Num: 1
+            },
+            methods: {
+                Add: function () {
+                    console.log('我是原生的Add方法');
+                    return this.Num++;
+                }
+            },
+            updated: function () {
+                console.log('我是原生的updated');
+            },
+            extends: extendObj,
+            // 扩展是放一个对象，混入是放一个数组
+            //delimiters的作用是改变我们插值的符号。Vue默认的插值是双大括号{{}}。
+            delimiters:['${','}']
+        })
+    </script>
+</body>
+
+</html>

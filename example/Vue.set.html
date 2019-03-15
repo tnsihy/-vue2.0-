@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.set全局操作</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>Vue.set全局操作</h1>
+    <hr>
+    <div id="app">
+        <p>{{number}}</p>
+        <p>{{goodName}}</p>
+        <button onclick="Add()">Add</button>
+
+        <hr>
+        <ol>
+            <li v-for="item of values">{{item}}</li>
+        </ol>
+    </div>
+
+    <script type="text/javascript">
+        function Add() {
+            /*
+            第1种方法使++    用Vue对象的方法添加    app.number++;
+            第2种方法使++    直接操作外部数据    outDate.number ++;
+            第3种方法：
+            */
+            Vue.set(outDate, 'number',4);//变成4的意思吧！
+            //JavaScript检测不到下标，不会自动更新 app.values[0] =='谢露星';故要使用Vue.set
+            Vue.set(app.values,0,'谢露星');
+        };
+
+        var outDate = {
+            number: 1,
+            goodName: 'car',
+            values:['邹银娇','陈银君','何梦磊','刘文君']
+        }
+        var app = new Vue({
+            el: '#app',
+            data: outDate
+        })
+    </script>
+</body>
+
+</html>

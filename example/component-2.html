@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component-2</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+
+<body>
+    <h1>component-2</h1>
+    <hr>
+    <div id="app">
+        <jgchen :my-name='message'></jgchen><!-- 有'属性'的组件 -->
+    </div>
+
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data:{
+                message:'陈建光'
+            },
+            components: {
+                'jgchen': {
+                    template: `<h2 style="color:green">{{myName}}</h2>`,
+                    props:['myName']
+                    // vue中不支持'-'这种写法，要采用小驼峰法
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

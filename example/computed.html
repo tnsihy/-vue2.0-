@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Computed Option 计算选项</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Computed Option 计算选项</h1>
+    <hr>
+    <div id="app">
+        {{newNum}}
+        <ul>
+            <li v-for="item in reverse">{{item.name}}--{{item.age}}</li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+    var person = [{name:'邹银娇',age:12},
+     {name:'陈银君',age:13},
+     {name:'何梦磊',age:14},
+     {name:'刘文君',age:15}];
+
+    var app = new Vue({
+        el:'#app',
+        data:{
+            Num:100,
+            'person':person
+        },
+        computed:{
+            newNum:function(){
+                return this.Num = '￥' + this.Num + '元';
+            },
+            reverse:function(){
+                return this.person.reverse();
+            }
+        }
+    })
+    </script>
+</body>
+</html>

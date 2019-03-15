@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>v-on实例</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-on实例</h1>
+    <hr>
+    <div id="app">
+        <p>比赛得分：<span v-text="message"></span></p>
+        <button v-on:click="Add">加分</button>
+        <button @click="Min">减分</button>
+        <br />
+        <input type="text" v-on:keyup.enter="onEnter" v-model="Num" />
+    </div>
+
+    <script type="text/javascript">
+    var app = new Vue({
+        el:'#app',
+        data:{
+            message:0,
+            Num:''
+        },
+        methods:{
+            Add:function(){
+                this.message ++;
+            },
+            Min:function(){
+                this.message --;
+            },
+            onEnter:function(){
+                // 键盘事件
+                this.message += parseInt(this.Num);
+            }
+        }
+    })
+    </script>
+</body>
+</html>
